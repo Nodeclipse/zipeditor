@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/zipeditor_0.0.0.qualifier.jar" id="zipeditor" version="0.0.0">
+      <category name="tools"/>
+   </feature>
+   <category-def name="tools" label="Tools">
+      <description>
+         This is Zip archive editor for the Eclipse platform. It support drag and drop
+         from within the platform as well as from outside applications. Files can be modified directly within the archive, 
+         which is updated after file modification.
+         https://sourceforge.net/projects/zipeditor/         
+      </description>
+   </category-def>
+</site>

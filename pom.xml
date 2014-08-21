@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>zipeditor</groupId>
+	<artifactId>zipeditor.parent</artifactId>
+	<version>1.1.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>ZipEditor (parent)</name>
+
+	<organization>
+		<name>Uwe Voigt</name>
+		<url>https://sourceforge.net/projects/zipeditor/</url>
+	</organization>
+	<!-- http://maven.apache.org/scm/git.html -->
+	<scm>
+		<url>http://zipeditor.cvs.sourceforge.net/viewvc/zipeditor/</url>
+		<connection>scm:cvs::pserver:anonymous@zipeditor.cvs.sourceforge.net:/cvsroot/zipeditor</connection>
+		<developerConnection>scm:cvs::pserver:anonymous@zipeditor.cvs.sourceforge.net:/cvsroot/zipeditor</developerConnection>
+	</scm>
+    <issueManagement>
+    	<system>SourceForge Tickets</system>
+    	<url>https://sourceforge.net/p/zipeditor/_list/tickets</url>
+    </issueManagement>
+    <ciManagement>
+    	<system>no</system>
+    	<url></url>
+    </ciManagement>    
+
+	<developers>
+		<developer>
+			<id>uwe_ewald</id>
+			<name>Uwe Voigt</name>
+			<email></email>
+			<organization></organization>
+			<roles>
+				<role>Lead Developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+			<name>Paul Verest</name>
+			<organization>Nodeclipse organization</organization>
+			<organizationUrl>http://www.nodeclipse.org/</organizationUrl>
+			<timezone>+8</timezone>
+		</contributor>
+	</contributors>
+
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
+
+	<properties>
+		<tycho-version>0.21.0</tycho-version>
+
+		<!-- PROJECT SETTINGS -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<tycho.test.jvmArgs>-Xmx512m -XX:MaxPermSize=256m</tycho.test.jvmArgs>
+	</properties>
+
+
+	<modules>
+		<module>ZipEditor</module>
+		<module>ZipEditor Feature</module>
+		<module>ZipEditor-repository</module>
+		<module>ZipEditor-test</module>
+	</modules>
+
+	<repositories>
+		<!-- ECLIPSE 3.7 
+		<repository>
+			<id>eclipse-indigo</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/indigo</url>
+		</repository>
+		-->
+		<!-- -->
+		<repository>
+			<id>kepler</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/kepler</url>
+			<!-- check /ZipEditor-test/META-INF/MANIFEST.MF for junit, that has different packaing names since Kepler -->
+		</repository>
+		 
+	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+
+			<!-- Setting up the tests to run 
+			https://wiki.eclipse.org/Tycho/Reference_Card 
+					<testSuite>Bundle-SymbolicName-of-bundleContaining-Tests</testSuite>
+					<testClass>FullyQualifiedNameOfTheTestClass</testClass>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<testSuite>ZipEditor-test</testSuite>
+					<testClass>zipeditor.model.ZipModelTest</testClass>
+				</configuration>
+			</plugin>			
+			-->
+	
+			<!-- from https://github.com/open-archetypes/tycho-eclipse-plugin-archetype example -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<useUIHarness>true</useUIHarness>
+					<includes>
+						<include>**/*Test.java</include>
+					</includes>
+					<argLine>${tycho.test.jvmArgs}</argLine>
+					<!-- kill test JVM if tests take more than 1 minute (60 seconds) to finish -->
+					<forkedProcessTimeoutInSeconds>60</forkedProcessTimeoutInSeconds>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+
+
+</project>
