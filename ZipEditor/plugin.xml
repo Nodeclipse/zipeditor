@@ -67,6 +67,36 @@
                default="TBZ"
                name="ZipEditor.archiveType"/>
       </content-type>
+      <content-type
+            base-type="archive"
+            describer="zipeditor.model.ZipContentDescriber"
+            id="jarfile"
+            name="%content-type.name.7"
+            priority="normal">
+         <property
+               default="GZ"
+               name="ZipEditor.archiveType"/>
+      </content-type>
+      <content-type
+            base-type="archive"
+            describer="zipeditor.model.ZipContentDescriber"
+            id="aarfile"
+            name="%content-type.name.8"
+            priority="normal">
+         <property
+               default="BZ2"
+               name="ZipEditor.archiveType"/>
+      </content-type>
+      <content-type
+            base-type="archive"
+            describer="zipeditor.model.ZipContentDescriber"
+            id="apkfile"
+            name="%content-type.name.9"
+            priority="normal">
+         <property
+               default="TBZ"
+               name="ZipEditor.archiveType"/>
+      </content-type>
       <file-association
             content-type="ZipEditor.zipfile"
             file-extensions="jar, zip, war, ear"/>
@@ -85,6 +115,15 @@
       <file-association
             content-type="ZipEditor.bz2file"
             file-extensions="bz2"/>
+      <file-association
+            content-type="ZipEditor.jarfile"
+            file-extensions="jar"/>
+      <file-association
+            content-type="ZipEditor.aarfile"
+            file-extensions="aar"/>
+      <file-association
+            content-type="ZipEditor.apkfile"
+            file-extensions="apk"/>
    </extension>
    <extension
          point="org.eclipse.ui.editors">
@@ -101,6 +140,9 @@
          <contentTypeBinding contentTypeId="ZipEditor.targzfile"/>
          <contentTypeBinding contentTypeId="ZipEditor.bz2file"/>
          <contentTypeBinding contentTypeId="ZipEditor.tarbz2file"/>
+         <contentTypeBinding contentTypeId="ZipEditor.jarfile"/>
+         <contentTypeBinding contentTypeId="ZipEditor.aarfile"/>
+         <contentTypeBinding contentTypeId="ZipEditor.apkfile"/>
       </editor>
    </extension>
    <extension

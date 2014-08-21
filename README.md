@@ -1,7 +1,9 @@
 
 This is ZipEditor by Uwe Voigt <https://sourceforge.net/p/zipeditor>
-[mp](http://marketplace.eclipse.org/content/eclipse-zip-editor)
-converted to Git.
+also on [mp](http://marketplace.eclipse.org/content/eclipse-zip-editor)
+converted to Git (only latest HEAD version without commit history).
+
+And by default associated with `.jar, .apk, .aar` archives
 
 ## Converting CVS to Git
 
@@ -41,6 +43,9 @@ That is actually <https://github.com/open-archetypes/tycho-eclipse-plugin-archet
 	
 Note that `mvn package` does not include running of unit test that are treated as integration tests,
 and thus must be run after `package` phaze.
-	
+
+Before release
+
+`mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.2.0-SNAPSHOT`	
 
 	

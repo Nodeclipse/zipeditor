@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public abstract class AbstractModelTest {
 
-	private ZipModel model;
+	protected ZipModel model;
 
 	public abstract String getArchiveName();
 
