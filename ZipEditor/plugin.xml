@@ -130,6 +130,7 @@
       <editor
             class="zipeditor.ZipEditor"
             contributorClass="zipeditor.ZipEditorActionBarContributor"
+            extensions="jar, zip, war, ear, gz, tar, tar.gz, tgz, tar.bz2, tbz, bz2"
             default="true"
             icon="icons/zipicon.gif"
             id="zipeditor.ZipEditor"
@@ -141,6 +142,15 @@
          <contentTypeBinding contentTypeId="ZipEditor.bz2file"/>
          <contentTypeBinding contentTypeId="ZipEditor.tarbz2file"/>
          <contentTypeBinding contentTypeId="ZipEditor.jarfile"/>
+      </editor>
+      <editor
+            class="zipeditor.ZipEditor"
+            contributorClass="zipeditor.ZipEditorActionBarContributor"
+            extensions="aar, apk"
+            default="true"
+            icon="icons/android_archive.png"
+            id="zipeditor.AndroidZipEditor"
+            name="%editor.name.1">
          <contentTypeBinding contentTypeId="ZipEditor.aarfile"/>
          <contentTypeBinding contentTypeId="ZipEditor.apkfile"/>
       </editor>
