@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            id="archive"
+            name="%content-type.name.0"
+            priority="normal"/>
+      <content-type
+            base-type="archive"
+            describer="zipeditor.model.ZipContentDescriber"
+            id="zipfile"
+            name="%content-type.name.1"
+            priority="normal">
+         <property
+               default="ZIP"
+               name="ZipEditor.archiveType"/>
+      </content-type>
+      <content-type
+            base-type="archive"
+            describer="zipeditor.model.ZipContentDescriber"
+            id="targzfile"
+            name="%content-type.name.2"
+            priority="normal">
+         <property
+               default="TGZ"
+               name="ZipEditor.archiveType"/>
+      </content-type>
+      <content-type
+            base-type="archive"
+            describer="zipeditor.model.ZipContentDescriber"
+            id="tarfile"
+            name="%content-type.name.3"
+            priority="normal">
+         <property
+               default="TAR"
+               name="ZipEditor.archiveType"/>
+      </content-type>
+      <content-type
+            base-type="archive"
+            describer="zipeditor.model.ZipContentDescriber"
+            id="gzipfile"
+            name="%content-type.name.4"
+            priority="normal">
+         <property
+               default="GZ"
+               name="ZipEditor.archiveType"/>
+      </content-type>
+      <content-type
+            base-type="archive"
+            describer="zipeditor.model.ZipContentDescriber"
+            id="bz2file"
+            name="%content-type.name.5"
+            priority="normal">
+         <property
+               default="BZ2"
+               name="ZipEditor.archiveType"/>
+      </content-type>
+      <content-type
+            base-type="archive"
+            describer="zipeditor.model.ZipContentDescriber"
+            id="tarbz2file"
+            name="%content-type.name.6"
+            priority="normal">
+         <property
+               default="TBZ"
+               name="ZipEditor.archiveType"/>
+      </content-type>
+      <file-association
+            content-type="ZipEditor.zipfile"
+            file-extensions="jar, zip, war, ear"/>
+      <file-association
+            content-type="ZipEditor.gzipfile"
+            file-extensions="gz"/>
+      <file-association
+            content-type="ZipEditor.tarfile"
+            file-extensions="tar"/>
+      <file-association
+            content-type="ZipEditor.targzfile"
+            file-extensions="tar.gz, tgz"/>
+      <file-association
+            content-type="ZipEditor.tarbz2file"
+            file-extensions="tar.bz2, tbz"/>
+      <file-association
+            content-type="ZipEditor.bz2file"
+            file-extensions="bz2"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="zipeditor.ZipEditor"
+            contributorClass="zipeditor.ZipEditorActionBarContributor"
+            default="true"
+            icon="icons/zipicon.gif"
+            id="zipeditor.ZipEditor"
+            name="%editor.name.0">
+         <contentTypeBinding contentTypeId="ZipEditor.zipfile"/>
+         <contentTypeBinding contentTypeId="ZipEditor.gzipfile"/>
+         <contentTypeBinding contentTypeId="ZipEditor.tarfile"/>
+         <contentTypeBinding contentTypeId="ZipEditor.targzfile"/>
+         <contentTypeBinding contentTypeId="ZipEditor.bz2file"/>
+         <contentTypeBinding contentTypeId="ZipEditor.tarbz2file"/>
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer class="zipeditor.PreferenceInitializer"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="zipeditor.ZipContentProvider"
+            icon="icons/zipicon.gif"
+            id="zipeditor.navigatorContent"
+            labelProvider="zipeditor.ZipLabelProvider"
+            name="%navigatorContent.name.0">
+         <triggerPoints>
+            <or>
+               <instanceof value="org.eclipse.core.resources.IFile"/>
+               <instanceof value="zipeditor.model.Node"/>
+               <instanceof value="org.eclipse.core.resources.IWorkspaceRoot"/>
+               <instanceof value="org.eclipse.core.resources.IFolder"/>
+               <instanceof value="org.eclipse.core.resources.IProject"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+               <instanceof value="zipeditor.model.Node"/>
+               <instanceof value="org.eclipse.core.resources.IWorkspaceRoot"/>
+               <instanceof value="org.eclipse.core.resources.IFile"/>
+               <instanceof value="org.eclipse.core.resources.IFolder"/>
+               <instanceof value="org.eclipse.core.resources.IProject"/>
+            </or>
+         </possibleChildren>
+         <commonSorter
+               class="zipeditor.ZipSorter"
+               id="zipeditor.ZipSorter">
+            <parentExpression>
+               <or>
+                  <instanceof value="zipeditor.model.Node"/>
+                  <instanceof value="org.eclipse.core.resources.IFile"/>
+               </or>
+            </parentExpression>
+         </commonSorter>
+         <actionProvider
+               class="zipeditor.actions.ZipActionProvider"
+               overrides="org.eclipse.ui.navigator.resources.OpenActions">
+            <enablement>
+               <or>
+                  <instanceof value="zipeditor.model.Node"/>
+                  <instanceof value="org.eclipse.core.resources.IFile"/>
+               </or>
+            </enablement>
+         </actionProvider>
+      </navigatorContent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension pattern="zipeditor.navigatorContent"/>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="zipeditor.ZipNodePropertyPage"
+            id="zipeditor.ZipNodePropertyPage"
+            name="%page.name.0"
+            objectClass="zipeditor.model.ZipNode"/>
+      <page
+            class="zipeditor.TarNodePropertyPage"
+            id="zipeditor.TarNodePropertyPage"
+            name="%page.name.1"
+            objectClass="zipeditor.model.TarNode"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.ui.category.edit"
+            id="zipeditor.command.selectPattern"
+            name="%command.name">
+      </command>
+      <command
+            categoryId="org.eclipse.ui.category.edit"
+            id="zipeditor.command.reverseSelection"
+            name="%command.name.0">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="zipeditor.command.selectPattern"
+            contextId="org.eclipse.ui.contexts.dialogAndWindow"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2++">
+      </key>
+      <key
+            commandId="zipeditor.command.reverseSelection"
+            contextId="org.eclipse.ui.contexts.dialogAndWindow"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+*">
+      </key>
+   </extension>
+
+</plugin>

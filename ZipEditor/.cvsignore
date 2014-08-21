@@ -1,0 +1,6 @@
+*.jar
+build.xml
+javaCompiler...args
+bin
+*.gif
+*.log
