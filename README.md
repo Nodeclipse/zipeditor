@@ -3,7 +3,10 @@ This is ZipEditor by Uwe Voigt <https://sourceforge.net/p/zipeditor>
 also on [mp](http://marketplace.eclipse.org/content/eclipse-zip-editor)
 converted to Git (only latest HEAD version without commit history).
 
-And by default associated with `.jar, .apk, .aar` archives
+And by default associated with `.jar, .apk, .aar` archives; use android icon
+![](ZipEditor/icons/android_archive.png)  
+
+Results are sent as pull request [patches#2](https://sourceforge.net/p/zipeditor/patches/2/)
 
 ## Converting CVS to Git
 
@@ -30,12 +33,15 @@ Trying
 
 ### Maven/tycho build
 
-Only pom.xml files were added accept for ZipEditor-test
+	mvn package
 
-[ERROR] Internal error: java.lang.RuntimeException: No solution found because the problem is unsatisfiable.: [Unable to satisfy dependency from ZipEditor-test 1.1.0.qualifier to bundle org.junit4 0.0.0.; No solution found because the problem is unsatisfiable.] -> [Help 1]
-org.apache.maven.InternalErrorException: Internal error: java.lang.RuntimeException: No solution found because the problem is unsatisfiable.: [Unable to satisfy dependency from ZipEditor-test 1.1.0.qualifier to bundle org.junit4 0.0.0.; No solution found because the problem is unsatisfiable.]
+Only pom.xml files were added accept for ZipEditor-test,
+where I had to modify `ZipEditor-test/META-INF/MANIFEST.MF`, because since kepler release packaging was changed. 
+(Investigated before as <https://github.com/open-archetypes/tycho-eclipse-plugin-archetype/issues/3> )
 
-That is actually <https://github.com/open-archetypes/tycho-eclipse-plugin-archetype/issues/3>
+> [ERROR] Internal error: java.lang.RuntimeException: No solution found because the problem is unsatisfiable.: [Unable to satisfy dependency from ZipEditor-test 1.1.0.qualifier to bundle org.junit4 0.0.0.; No solution found because the problem is unsatisfiable.] -> [Help 1]
+> org.apache.maven.InternalErrorException: Internal error: java.lang.RuntimeException: No solution found because the problem is unsatisfiable.: [Unable to satisfy dependency from ZipEditor-test 1.1.0.qualifier to bundle org.junit4 0.0.0.; No solution found because the problem is unsatisfiable.]
+
 
 #### Running tests
 
@@ -47,5 +53,6 @@ and thus must be run after `package` phaze.
 Before release
 
 `mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.2.0-SNAPSHOT`	
+
 
 	
