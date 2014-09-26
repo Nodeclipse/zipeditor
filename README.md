@@ -42,18 +42,12 @@ where I had to modify `ZipEditor-test/META-INF/MANIFEST.MF`, because since keple
 > [ERROR] Internal error: java.lang.RuntimeException: No solution found because the problem is unsatisfiable.: [Unable to satisfy dependency from ZipEditor-test 1.1.0.qualifier to bundle org.junit4 0.0.0.; No solution found because the problem is unsatisfiable.] -> [Help 1]
 > org.apache.maven.InternalErrorException: Internal error: java.lang.RuntimeException: No solution found because the problem is unsatisfiable.: [Unable to satisfy dependency from ZipEditor-test 1.1.0.qualifier to bundle org.junit4 0.0.0.; No solution found because the problem is unsatisfiable.]
 
-
 #### Running tests
 
 	mvn integration-test
 	
 Note that `mvn package` does not include running of unit test that are treated as integration tests,
 and thus must be run after `package` phaze.
-
-Before release
-
-`mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.2.0-SNAPSHOT`	
-
 
 #### Before release
 
