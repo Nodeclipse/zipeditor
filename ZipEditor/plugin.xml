@@ -130,7 +130,7 @@
       <editor
             class="zipeditor.ZipEditor"
             contributorClass="zipeditor.ZipEditorActionBarContributor"
-            extensions="jar, zip, war, ear, gz, tar, tar.gz, tgz, tar.bz2, tbz, bz2"
+            extensions="jar, zip, war, ear, gzip, gz, tar, tar.gz, tgz, tar.bz2, tbz, bz2"
             default="true"
             icon="icons/zipicon.gif"
             id="zipeditor.ZipEditor"
