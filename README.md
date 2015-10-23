@@ -8,6 +8,8 @@ And by default associated with `.jar, .apk, .aar` archives; use android icon
 
 Results are sent as pull request [patches#2](https://sourceforge.net/p/zipeditor/patches/2/)
 
+This modified version binary can be found within `http://www.nodeclipse.org/updates/` update site.
+
 ## Converting CVS to Git
 
 http://stackoverflow.com/questions/881158/is-there-a-migration-tool-from-cvs-to-git
