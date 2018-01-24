@@ -99,7 +99,7 @@
       </content-type>
       <file-association
             content-type="ZipEditor.zipfile"
-            file-extensions="jar, jmod, jpi, zip, war, ear, docx, xlsx, graffle"/>
+            file-extensions="jar, jmod, jpi, zip, war, ear, graffle"/>
       <file-association
             content-type="ZipEditor.gzipfile"
             file-extensions="gz"/>
