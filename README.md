@@ -1,12 +1,12 @@
 
-This is ZipEditor by Uwe Voigt <https://sourceforge.net/p/zipeditor>
-also on [mp](http://marketplace.eclipse.org/content/eclipse-zip-editor)
+This is fork of ZipEditor by Uwe Voigt <https://sourceforge.net/p/zipeditor>
+( also on [mp](http://marketplace.eclipse.org/content/eclipse-zip-editor) )
 converted to Git (only latest HEAD version without commit history).
 
-And by default associated with `.jar, .apk, .aar` archives; use android icon
+And by default associated with `.jar`, Java 9 `.jmod`, Android `.apk, .aar` archives; use android icon
 ![](ZipEditor/icons/android_archive.png)  
 
-Results are sent as pull request [patches#2](https://sourceforge.net/p/zipeditor/patches/2/)
+2014 Results were sent as pull request [patches#2](https://sourceforge.net/p/zipeditor/patches/2/)
 
 This modified version binary can be found within `http://www.nodeclipse.org/updates/` update site.
 
