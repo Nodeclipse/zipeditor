@@ -53,4 +53,4 @@ and thus must be run after `package` phaze.
 
 #### Before release
 
-`mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.1.2-SNAPSHOT`	
+`mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.2.0-SNAPSHOT`	
